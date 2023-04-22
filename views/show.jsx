@@ -26,9 +26,6 @@ function Show ({bread, index}) {
     )
 }
 
-
-  
-  
   
 module.exports = Show
 
