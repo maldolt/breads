@@ -13,16 +13,8 @@ breads.get('/', (req, res) => {
       })
 })
 
-// UPDATE
-breads.put('/:id', (req, res) => {
-  if(req.body.hasGluten === 'on'){
-    req.body.hasGluten = true
-  } else {
-    req.body.hasGluten = false
-  }
-  Bread[req.params.arrayIndex] = req.body
-  res.redirect(`/breads/${req.params.arrayIndex}`)
-})
+
+
 
 // NEW
 breads.get('/new', (req, res) => {
@@ -30,11 +22,14 @@ breads.get('/new', (req, res) => {
 })
 // EDIT
 breads.get('/:id/edit', (req, res) => {
-  res.render('edit', {
-    bread: Bread[req.params.indexArray],
-    index: req.params.indexArray
-  })
+  Bread.findById(req.params.id) 
+    .then(foundBread => { 
+      res.render('edit', {
+        bread: foundBread 
+      })
+    })
 })
+
 
 // SHOW
 breads.get('/:id', (req, res) => {
@@ -49,7 +44,19 @@ breads.get('/:id', (req, res) => {
     })
 })
 
-
+// UPDATE
+breads.put('/:id', (req, res) => {
+  if(req.body.hasGluten === 'on'){
+    req.body.hasGluten = true
+  } else {
+    req.body.hasGluten = false
+  }
+  Bread.findByIdAndUpdate(req.params.id, req.body, { new: true }) 
+    .then(updatedBread => {
+      console.log(updatedBread) 
+      res.redirect(`/breads/${req.params.id}`) 
+    })
+})
 
 // CREATE
 breads.post('/', (req, res) => {
