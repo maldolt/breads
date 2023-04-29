@@ -2,9 +2,6 @@
 const express = require('express')
 const methodOverride = require('method-override')
 
-
-
-
 // CONFIGURATION
 require('dotenv').config()
 const PORT = process.env.PORT

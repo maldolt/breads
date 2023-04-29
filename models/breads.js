@@ -13,6 +13,10 @@ const breadSchema = new Schema({
       enum: ['Rachel', 'Monica', 'Joey', 'Chandler', 'Ross', 'Phoebe']
     }
 })
+// helper methods 
+breadSchema.methods.getBakedBy = function(){
+  return `${this.name} was baked with love by ${this.baker}`
+}
 
 
 // model and export 
