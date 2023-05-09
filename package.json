@@ -1,10 +1,12 @@
 {
   "name": "breads",
   "version": "1.0.0",
+  "engines": {
+    "node": "v18.12.1"
+  },
   "description": "express full CRUD with SSR JSX",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
